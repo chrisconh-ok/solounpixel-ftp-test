@@ -26,3 +26,4 @@ jobs:
             remote_path: '/public_html/'
             sftp_only: true
             password: ${{ secrets.FTP_PASSWORD }}
+            
