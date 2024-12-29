@@ -14,8 +14,6 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - name: Install, build, and upload your site
         uses: withastro/action@v2
       - name: Upload build artifacts
@@ -32,20 +30,13 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: astro-build
-      - name: Checkout your repository using git
-        uses: actions/checkout@v4
+      - name: Sync files
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          fetch-depth: 0
-      - name: SFTP Connection and Sync
-        uses: milanmk/actions-file-deployer@master
-        with:
-          remote-protocol: 'sftp'
-          remote-host: ${{ secrets.FTP_SERVER }}
-          remote-port: ${{ secrets.FTP_PORT }}
-          remote-user: ${{ secrets.FTP_USERNAME }}
-          remote-password: ${{ secrets.FTP_PASSWORD }}
-          remote-path: ${{ secrets.FTP_PATH }}
-          local-path: '/'
-          sync: 'delta'
-          sync-delta-excludes: |
-            prueba/
+            username: ${{ secrets.FTP_USERNAME }}
+            server: ${{ secrets.FTP_SERVER }}
+            port: ${{ secrets.FTP_PORT }}
+            local_path: './*' 
+            remote_path: ${{ secrets.FTP_PATH }}
+            sftp_only: true
+            password: ${{ secrets.FTP_PASSWORD }}
