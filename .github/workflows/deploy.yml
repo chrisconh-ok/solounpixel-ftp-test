@@ -30,5 +30,13 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: astro-build
-      - name: Display structure of downloaded files
-        run: ls -R
+      - name: Sync files
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+            username: ${{ secrets.FTP_USERNAME }}
+            server: ${{ secrets.FTP_SERVER }}
+            port: ${{ secrets.FTP_PORT }}
+            local_path: './*' # Cambia la ruta a donde se descargó el artifact
+            remote_path: ${{ secrets.FTP_PATH }}
+            sftp_only: true
+            password: ${{ secrets.FTP_PASSWORD }}
