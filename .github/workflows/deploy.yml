@@ -9,13 +9,17 @@ permissions:
   id-token: write
 
 jobs:
-  ftp-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install, build, and upload your site
-        uses: withastro/action@v0
+        uses: withastro/action@v2
+
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
       - name: Sync files
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
@@ -26,4 +30,3 @@ jobs:
             remote_path: ${{ secrets.FTP_PATH }}
             sftp_only: true
             password: ${{ secrets.FTP_PASSWORD }}
-            
