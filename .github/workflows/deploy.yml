@@ -30,13 +30,13 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: astro-build
-      - name: Sync files
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      - name: Sync files using rsync over SSH
+        uses: appleboy/ssh-action@v1.2.0
         with:
-            username: ${{ secrets.FTP_USERNAME }}
-            server: ${{ secrets.FTP_SERVER }}
-            port: ${{ secrets.FTP_PORT }}
-            local_path: './*' 
-            remote_path: ${{ secrets.FTP_PATH }}
-            sftp_only: true
-            password: ${{ secrets.FTP_PASSWORD }}
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT }}
+          script: |
+            # Sync files, excluding the "Prueba" folder
+            rsync -avz --delete --exclude 'Prueba' ./dist/ ${username}@${host}:${{ secrets.FTP_PATH }}/
