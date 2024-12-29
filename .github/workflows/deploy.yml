@@ -30,17 +30,5 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: astro-build
-      - name: Move artifact files to correct location
-        run: mv astro-build/* ./astro-build/
-      - name: List files for debugging
-        run: ls -R ./astro-build
-      - name: Sync files
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-        with:
-            username: ${{ secrets.FTP_USERNAME }}
-            server: ${{ secrets.FTP_SERVER }}
-            port: ${{ secrets.FTP_PORT }}
-            local_path: './astro-build/*'
-            remote_path: ${{ secrets.FTP_PATH }}
-            sftp_only: true
-            password: ${{ secrets.FTP_PASSWORD }}
+      - name: Display structure of downloaded files
+        run: ls -R
