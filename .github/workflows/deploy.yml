@@ -30,17 +30,14 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: astro-build
-      - name: FTP/SFTP implementador de archivos
-        uses: milanmk/actions-file-deployer@1.16   
+      - name: "Deploy"
+        uses: milanmk/actions-file-deployer@master
         with:
-          protocol: sftp
-          host: ${{ secrets.FTP_SERVER }}
-          port: ${{ secrets.FTP_PORT }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          source: './'
-          target: ${{ secrets.FTP_PATH }}
-          delete: true
-          force_clean: false
-          exclude: |
-            /prueba
+          remote-protocol: 'sftp'
+          remote-host: ${{ secrets.FTP_SERVER }}
+          remote-port: ${{ secrets.FTP_PORT }}
+          remote-user: ${{ secrets.FTP_USERNAME }}
+          remote-password: ${{ secrets.FTP_PASSWORD }}
+          remote-path: ${{ secrets.FTP_PATH }}
+          local-path: './'
+          sync-delta-excludes: './prueba'
