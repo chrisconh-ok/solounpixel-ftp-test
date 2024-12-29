@@ -30,8 +30,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: astro-build
-      - name: Deploy files via SFTP
-        uses: milanmk/actions-file-deployer@1.16
+      - name: FTP/SFTP implementador de archivos
+        uses: milanmk/actions-file-deployer@1.16   
         with:
           protocol: sftp
           host: ${{ secrets.FTP_SERVER }}
