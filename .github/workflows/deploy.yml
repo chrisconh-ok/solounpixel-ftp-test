@@ -30,13 +30,17 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: astro-build
-      - name: Sync files
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      - name: Deploy files via SFTP
+        uses: milanmk/actions-file-deployer@1.16
         with:
-            username: ${{ secrets.FTP_USERNAME }}
-            server: ${{ secrets.FTP_SERVER }}
-            port: ${{ secrets.FTP_PORT }}
-            local_path: './*' # Cambia la ruta a donde se descargó el artifact
-            remote_path: ${{ secrets.FTP_PATH }}
-            sftp_only: true
-            password: ${{ secrets.FTP_PASSWORD }}
+          protocol: sftp
+          host: ${{ secrets.FTP_SERVER }}
+          port: ${{ secrets.FTP_PORT }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          source: './'
+          target: ${{ secrets.FTP_PATH }}
+          delete: true
+          force_clean: false
+          exclude: |
+            /prueba
