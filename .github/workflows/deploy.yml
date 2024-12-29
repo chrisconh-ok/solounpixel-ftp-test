@@ -31,7 +31,7 @@ jobs:
         with:
           name: astro-build
       - name: Sync files
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        uses: chrisconh-ok/Deploy-SFTP-Action@master
         with:
             username: ${{ secrets.FTP_USERNAME }}
             server: ${{ secrets.FTP_SERVER }}
