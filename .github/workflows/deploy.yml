@@ -30,6 +30,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: astro-build
+      - name: Move artifact files to correct location
+        run: mv astro-build/* ./astro-build/
+      - name: List files for debugging
+        run: ls -R ./astro-build
       - name: Sync files
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
