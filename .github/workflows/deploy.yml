@@ -30,9 +30,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: astro-build
-      - name: Verify SSH variables
-        run: |
-          echo "Host: ${{ secrets.FTP_SERVER }}" 
       - name: Sync files using rsync over SSH
         uses: appleboy/ssh-action@v1.2.0
         with:
@@ -42,5 +39,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           script: |
             # Sync files, excluding the "Prueba" folder
-            rsync -avz --delete --exclude 'Prueba' ./dist/ ${username}@${host}:${{ secrets.FTP_PATH }}/
-
+            rsync -avz --delete --exclude 'Prueba' ~/* ${{ secrets.FTP_USERNAME }}@${{ secrets.FTP_SERVER }}:~${{ secrets.FTP_PATH }}/
