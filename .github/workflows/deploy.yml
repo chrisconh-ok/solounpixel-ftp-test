@@ -30,8 +30,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: astro-build
-      - name: "Deploy"
-        uses: milanmk/actions-file-deployer@master
+      - name: SFTP Connection and Sync
+        uses: milanmk/actions-file-deployer@1.6
         with:
           remote-protocol: 'sftp'
           remote-host: ${{ secrets.FTP_SERVER }}
