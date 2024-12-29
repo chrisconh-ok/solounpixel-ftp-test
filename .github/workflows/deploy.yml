@@ -32,6 +32,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: astro-build
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: SFTP Connection and Sync
         uses: milanmk/actions-file-deployer@master
         with:
