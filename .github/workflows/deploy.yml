@@ -20,7 +20,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: astro-build
-          path: /dist/
+          path: ./dist
           
   deploy:
     needs: build
@@ -36,7 +36,7 @@ jobs:
             username: ${{ secrets.FTP_USERNAME }}
             server: ${{ secrets.FTP_SERVER }}
             port: ${{ secrets.FTP_PORT }}
-            local_path: '/dist/*'
+            local_path: './dist/*'
             remote_path: ${{ secrets.FTP_PATH }}
             sftp_only: true
             password: ${{ secrets.FTP_PASSWORD }}
