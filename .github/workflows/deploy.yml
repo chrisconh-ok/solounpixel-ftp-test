@@ -31,7 +31,7 @@ jobs:
         with:
           name: astro-build
       - name: Sync files
-        uses: chrisconh-ok/SFTP-Deploy-Action@master
+        uses: chrisconh-ok/Deploy-SFTP-Action@master
         with:
             username: ${{ secrets.FTP_USERNAME }}
             server: ${{ secrets.FTP_SERVER }}
@@ -40,4 +40,3 @@ jobs:
             remote_path: ${{ secrets.FTP_PATH }}
             sftp_only: true
             password: ${{ secrets.FTP_PASSWORD }}
-            delete_remote_files: true
