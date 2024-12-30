@@ -33,7 +33,7 @@ jobs:
       - name: Rsync Deployments Acción con clave ssh y contraseña
         uses: kroominator/rsync-deployments-simply-com@5.2.2    
         with:
-          switches: -rvaz --exclude='prueba/' --exclude='/prueba/' --exclude='prueba' --exclude='public_html/prueba/' --delete
+          switches: -rvazn --exclude='prueba/' --exclude='/prueba/' --exclude='prueba' --exclude='public_html/prueba/' --delete
           path: /
           remote_path: ${{ secrets.FTP_PATH }}
           remote_host: ${{ secrets.FTP_SERVER }}
