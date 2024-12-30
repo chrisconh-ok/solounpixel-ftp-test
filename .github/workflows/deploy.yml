@@ -30,16 +30,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: astro-build
-      - name: Sync files
-        uses: chrisconh-ok/Deploy-SFTP-Action@master
-        with:
-            username: ${{ secrets.FTP_USERNAME }}
-            server: ${{ secrets.FTP_SERVER }}
-            port: ${{ secrets.FTP_PORT }}
-            local_path: './*' 
-            remote_path: ${{ secrets.FTP_PATH }}
-            sftp_only: true
-            password: ${{ secrets.FTP_PASSWORD }}
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.2
         with:
