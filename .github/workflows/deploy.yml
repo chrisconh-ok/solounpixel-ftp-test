@@ -30,8 +30,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: astro-build
-      - name: rsync deployments
-        uses: burnett01/rsync-deployments@5.2
+      - name: Rsync Deployments Acción con clave ssh y contraseña
+        uses: kroominator/rsync-deployments-simply-com@5.2.2    
         with:
           switches: -avzr --delete
           path: ./*
