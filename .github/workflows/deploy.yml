@@ -31,9 +31,9 @@ jobs:
         with:
           name: astro-build
       - name: Rsync Deployments Acción con clave ssh y contraseña
-        uses: kroominator/rsync-deployments-simply-com@5.2.2    
+        uses: kroominator/rsync-deployments-simply-com@5.2.1    
         with:
-          switches: -rvaz --exclude '/prueba/' --delete
+          switches: -rvaz --exclude='/prueba/' --delete
           path: /
           remote_path: ${{ secrets.FTP_PATH }}
           remote_host: ${{ secrets.FTP_SERVER }}
