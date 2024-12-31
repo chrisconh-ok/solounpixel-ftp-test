@@ -33,13 +33,13 @@ jobs:
       - name: Deploy SSH rsync Action
         uses: chrisconh-ok/deploy-ssh-rsync-action@main  
         with:
-          REMOTE_HOST: ${ secrets.FTP_SERVER }
-          REMOTE_PORT: ${ secrets.FTP_PORT }
-          REMOTE_USER: ${ secrets.FTP_USER }
+          REMOTE_HOST: ${{ secrets.FTP_SERVER }}
+          REMOTE_PORT: ${{ secrets.FTP_PORT }}
+          REMOTE_USER: ${{ secrets.FTP_USER }}
           REMOTE_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          REMOTE_SSH_KEY: ${ secrets.FTP_SSHKEY }
-          REMOTE_SSH_KEY_PASS: ${ secrets.FTP_SSHKPASS }
-          REMOTE_PATH: ${ secrets.FTP_PATH }
+          REMOTE_SSH_KEY: ${{ secrets.FTP_SSHKEY }}
+          REMOTE_SSH_KEY_PASS: ${{ secrets.FTP_SSHKPASS }}
+          REMOTE_PATH: ${{ secrets.FTP_PATH }}
           LOCAL_PATH: /
           RSYNC_OPTIONS: -rvaz --exclude='/prueba/' --delete
           
