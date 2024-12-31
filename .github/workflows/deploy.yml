@@ -35,11 +35,10 @@ jobs:
         with:
           REMOTE_HOST: ${{ secrets.FTP_SERVER }}
           REMOTE_PORT: ${{ secrets.FTP_PORT }}
-          REMOTE_USER: ${{ secrets.FTP_USER }}
+          REMOTE_USER: ${{ secrets.FTP_USERNAME }}
           REMOTE_PASSWORD: ${{ secrets.FTP_PASSWORD }}
           REMOTE_SSH_KEY: ${{ secrets.FTP_SSHKEY }}
           REMOTE_SSH_KEY_PASS: ${{ secrets.FTP_SSHKPASS }}
           REMOTE_PATH: ${{ secrets.FTP_PATH }}
           LOCAL_PATH: /
           RSYNC_OPTIONS: -rvaz --exclude='/prueba/' --delete
-          
