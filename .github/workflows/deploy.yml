@@ -31,7 +31,7 @@ jobs:
         with:
           name: astro-build
       - name: Deploy SSH rsync Action
-        uses: chrisconh-ok/deploy-ssh-rsync-action.git@0.1   
+        uses: chrisconh-ok/deploy-ssh-rsync-action@0.1  
         with:
           switches: -rvaz --exclude='/prueba/' --delete
           path: /
